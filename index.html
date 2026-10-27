@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#4B244A">
+  <title>ውዷ ውባለም፣ መልካም ልደት! ❤️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <video class="background-video" id="backgroundVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1">
+    <source src="assets/music/background.mp4" type="video/mp4">
+  </video>
+  <div class="ambient" aria-hidden="true" id="ambient"></div>
+  <div class="confetti" aria-hidden="true" id="confetti"></div>
+
+  <div class="music-control" role="group" aria-label="የጀርባ ሙዚቃ መቆጣጠሪያዎች">
+    <button class="music-toggle" id="musicControl" type="button" aria-label="የልደት ሙዚቃን አጫውት" aria-pressed="false">
+      <span class="music-icon" aria-hidden="true">♫</span>
+      <span id="musicLabel" class="sr-only">ሙዚቃ አጫውት</span>
+    </button>
+    <label class="music-volume" aria-label="የሙዚቃ ድምፅ መጠን">
+      <span aria-hidden="true">🔊</span>
+      <input id="musicVolume" type="range" min="0" max="1" step="0.05" value="0.45" aria-label="የሙዚቃ ድምፅ መጠን">
+    </label>
+  </div>
+  <audio id="birthdayMusic" loop preload="none">
+    <source src="assets/music/background.mp4" type="audio/mp4">
+  </audio>
+
+  <section class="welcome" id="welcome" aria-labelledby="welcomeTitle">
+    <div class="welcome-glow" aria-hidden="true"></div>
+    <p class="eyebrow">ለአንቺ ብቻ የተዘጋጀ ትንሽ የልደት ዓለም</p>
+    <h1 id="welcomeTitle">ውዷ ውባለም!<br><span>አንድ ልዩ ስጦታ እየጠበቀሽ ነው…</span></h1>
+    <p class="welcome-note">ትንፋሽ ውሰጂ፣ ፈገግ በይና ግቢ።</p>
+    <button class="primary-button" id="startButton" type="button">ስጦታሽን ክፈቺ <span aria-hidden="true">🎁</span></button>
+  </section>
+
+  <main id="surprise" class="surprise is-locked">
+    <section class="hero section-shell" aria-labelledby="birthdayTitle">
+      <div class="hero-copy">
+        <p class="eyebrow">ዛሬ ሁሉም ለአንቺ ነው</p>
+        <h2 id="birthdayTitle">መልካም ልደት፣<br><em>ውባለም!</em></h2>
+        <p class="hero-subtitle">ውድ የልቤ ጓደኛ <span aria-hidden="true">💗</span></p>
+        <p class="hero-sign">ከቅርብ ጓደኛሽ፣ ሀብታም</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="flower flower-one">✿</div>
+        <div class="flower flower-two">✽</div>
+        <div class="balloon balloon-one"></div>
+        <div class="balloon balloon-two"></div>
+        <div class="birthday-badge">የልደት<br><strong>ንግሥት</strong></div>
+      </div>
+    </section>
+
+    <section class="cake-section section-shell reveal" aria-labelledby="cakeTitle">
+      <div class="section-heading">
+        <p class="eyebrow">ይህን አፍታ የአንቺ አድርጊ</p>
+        <h2 id="cakeTitle">ዓይኖችሽን ጨፍኚና ምኞት ተመኚ</h2>
+      </div>
+      <div class="cake-wrap">
+        <div class="cake" aria-label="በሚያበሩ ሻማዎች የተሰራ የልደት ኬክ">
+          <div class="candle candle-one"><i></i></div>
+          <div class="candle candle-two"><i></i></div>
+          <div class="candle candle-three"><i></i></div>
+          <div class="cake-top"><span></span><span></span><span></span></div>
+          <div class="cake-middle"></div>
+          <div class="cake-bottom"></div>
+          <div class="cake-plate"></div>
+        </div>
+      </div>
+      <button class="secondary-button" id="wishButton" type="button">ምኞት ተመኚ <span aria-hidden="true">✨</span></button>
+      <p class="wish-message" id="wishMessage" aria-live="polite"></p>
+    </section>
+
+    <section class="gift-section section-shell reveal" aria-labelledby="giftTitle">
+      <div class="section-heading">
+        <p class="eyebrow">ለአንቺ የተዘጋጀ ትንሽ ስጦታ</p>
+        <h2 id="giftTitle">የጓደኝነታችን ውድ ሀብት</h2>
+      </div>
+      <button class="gift" id="gift" type="button" aria-expanded="false" aria-controls="giftReveal">
+        <span class="gift-lid"><b>♡</b></span>
+        <span class="gift-box"><i></i></span>
+        <span class="gift-bow"></span>
+      </button>
+      <p class="hint" id="giftHint">ስጦታውን ለመክፈት ንኪው</p>
+      <div class="gift-reveal" id="giftReveal" aria-hidden="true">
+        <span class="tiny-flourish">✦</span>
+        <p>ስለ አንቺ በጣም የምወደው፣ ተራ ጊዜያትን ልዩ ማድረግ መቻልሽን ነው።</p>
+        <strong>የቅርብ ጓደኛሽ መሆኔ ሁሌም የምዘክረው ስጦታ ነው።</strong>
+      </div>
+    </section>
+
+    <section class="featured section-shell reveal" aria-labelledby="featuredTitle">
+      <div class="featured-photo photo-trigger" tabindex="0" role="button" aria-label="የውባለምን ፎቶ ክፈት">
+        <img src="assets/images/bcha.jpg" alt="የውባለም የግል ፎቶ">
+      </div>
+      <div class="featured-copy">
+        <p class="eyebrow">ለልደት ቀንሽ</p>
+        <h2 id="featuredTitle">ቆንጆዋ<br><em>ጓደኛዬ</em></h2>
+        <p>ደግ ልብ፣ ብሩህ መንፈስና ማንኛውንም ቦታ በሙቀት የሚሞላ ፈገግታ አለሽ። ይህ ትንሽ የኢንተርኔት ገጽ ያንን ሁሉ ለማክበር ተዘጋጅቷል።</p>
+        <span class="hand-note">ከልቤ በጓደኝነት ♡</span>
+      </div>
+    </section>
+
+    <section class="gallery-section section-shell reveal" aria-labelledby="galleryTitle">
+      <div class="section-heading">
+        <p class="eyebrow">የአብሮነታችን ፎቶዎች</p>
+        <h2 id="galleryTitle">የምንወዳቸው ትዝታዎች</h2>
+      </div>
+      <div class="gallery">
+        <figure class="photo-card photo-trigger" tabindex="0" role="button">
+          <img src="assets/images/withbegena.jpg" alt="ሀብታምና ውባለም አብረው ያሉበት ፎቶ">
+          <figcaption>የጓደኝነታችን ደስተኛ ጊዜያት</figcaption>
+        </figure>
+        <figure class="photo-card photo-trigger" tabindex="0" role="button">
+          <img src="assets/images/without begena huletachn.jpg" alt="ሀብታምና ውባለም አብረው ያሉበት ፎቶ">
+          <figcaption>ሁሌም የምናስታውሰው ውድ ትዝታ</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="video-section section-shell reveal" aria-labelledby="videoTitle">
+      <div class="section-heading">
+        <p class="eyebrow">በምስል የተቀረ ትዝታ</p>
+        <h2 id="videoTitle">ለአንቺ የተዘጋጀ ቪዲዮ</h2>
+        <p>ይህን ጊዜ እንደገና ለማየት ዝግጁ ስትሆኚ አጫውቺ።</p>
+      </div>
+      <div class="video-frame">
+        <video id="birthdayVideo" controls playsinline preload="metadata" poster="assets/images/withbegena.jpg">
+          <source src="assets/music/background.mp4" type="video/mp4">
+          አሳሽሽ ቪዲዮን ማጫወት አይችልም።
+        </video>
+      </div>
+    </section>
+
+    <section class="letter-section section-shell reveal" id="letterSection" aria-labelledby="letterTitle">
+      <div class="letter-prompt">
+        <p class="eyebrow">ከልቤ የመነጩ ቃላት</p>
+        <h2 id="letterTitle">ለአንቺ የተጻፈ ልዩ ደብዳቤ</h2>
+        <p>አንዳንድ ስሜቶች ከመልእክት የበለጠ ቃል ይገባቸዋል።</p>
+        <button class="primary-button" id="openLetter" type="button" aria-expanded="false" aria-controls="letterModal">ልዩ ደብዳቤሽን ክፈቺ <span aria-hidden="true">💌</span></button>
+      </div>
+    </section>
+
+    <section class="memories section-shell reveal" aria-labelledby="memoriesTitle">
+      <div class="section-heading">
+        <p class="eyebrow">የአብሮነታችን በዓል</p>
+        <h2 id="memoriesTitle">የማከብራቸው ትንንሽ ነገሮች <span aria-hidden="true">💗</span></h2>
+        <p class="memory-subtitle">ጓደኝነታችን — የሕይወቴ ተወዳጅ ክፍል</p>
+      </div>
+      <div class="memory-grid">
+        <article class="memory-card">
+          <div class="memory-card-top">
+            <span class="memory-number">01</span>
+            <span class="memory-icon" aria-hidden="true">😂</span>
+          </div>
+          <h3>ሳቃችን</h3>
+          <p>የምንቀልዳቸው ቀልዶች፣ የምንጋራቸው አስቂኝ አፍታዎችና ሳቃችን የቅርብ ጓደኛሽ መሆኔን ከሚያስደስቱኝ ነገሮች መካከል ናቸው። አብረን ስንሆን ተራ ጊዜያት እንኳ የበለጠ ደስ ይላሉ። ወደ ሕይወቴ የምታመጪውን ደስታ፣ መጽናናትና ሐሴት እወዳለሁ።</p>
+        </article>
+        <article class="memory-card">
+          <div class="memory-card-top">
+            <span class="memory-number">02</span>
+            <span class="memory-icon" aria-hidden="true">💌</span>
+          </div>
+          <h3>ከልብ የምናደርጋቸው ውይይቶች</h3>
+          <p>ያለንን ሐሳብ ስለምንጋራ፣ በቅን ልብ ስለምንሰማና እርስ በርሳችንን ለመረዳት ስለምንጥር አመሰግናለሁ። ከአንቺ ጋር ራሴን ሆኜ መኖር ይመቸኛል። ጓደኝነታችንን ደህንነት የሚሰማበት ቦታ ስላደረጉት እምነትሽን፣ ደግነትሽንና ድጋፍሽን አመሰግናለሁ።</p>
+        </article>
+        <article class="memory-card">
+          <div class="memory-card-top">
+            <span class="memory-number">03</span>
+            <span class="memory-icon" aria-hidden="true">🌷</span>
+          </div>
+          <h3>የወደፊት ትዝታዎቻችን</h3>
+          <p>አዳዲስ ጉዞዎች፣ ወደ ኋላ ተመልሰን የምናያቸው ፎቶዎች፣ ተጨማሪ ሳቅ፣ ልዩ በዓላትና የምንዘክራቸው ትዝታዎች ይጠብቁናል። እርስ በርሳችንን ማበረታታታችንን ቀጥለን መጪዎቹን ዓመታት የበለጠ ውብ ለማድረግ በጣም እጓጓለሁ።</p>
+        </article>
+      </div>
+      <article class="friendship-note" aria-labelledby="friendshipNoteTitle">
+        <span class="friendship-note-flower" aria-hidden="true">✿</span>
+        <p class="friendship-note-kicker">ከልቤ የተጻፈ ትንሽ ማስታወሻ</p>
+        <h3 id="friendshipNoteTitle">ከሀብታም የተላከ ትንሽ መልእክት <span aria-hidden="true">❤️</span></h3>
+        <p>ውባለም፣ የቅርብ ጓደኛዬ ስለሆንሽ ከልቤ አመሰግንሻለሁ። በቃላት ሙሉ በሙሉ ልገልጸው በማልችለው መንገድ ደስታን ወደ ሕይወቴ ታመጫለሽ። ለብዙ ዓመታት አብረን እንድንስቅ፣ እንድንደጋገፍ፣ ስኬቶቻችንን እንድናከብርና ውብ ትዝታዎችን እንድንፈጥር እመኛለሁ። እንደ ቅርብ ጓደኛዬ ሁሌም በልቤ ውስጥ ልዩ ቦታ ይኖርሻል። መልካም ልደት፣ ውድ ጓደኛዬ! 🎂💗</p>
+        <p class="friendship-note-sign">በጓደኝነት ፍቅር፣<br><strong>ሀብታም</strong></p>
+      </article>
+    </section>
+
+    <section class="secret-section section-shell reveal" aria-labelledby="secretTitle">
+      <div class="section-heading">
+        <p class="eyebrow">አንድ ትንሽ ነገር ገና ቀርቷል…</p>
+        <h2 id="secretTitle">አንድ ትንሽ ሚስጥር <span aria-hidden="true">🤫💌</span></h2>
+      </div>
+      <button class="secret-envelope" id="secretEnvelope" type="button" aria-expanded="false" aria-controls="secretNote">
+        <span class="envelope-flap"></span>
+        <span class="envelope-heart">ው</span>
+        <span class="envelope-front">ለውባለም</span>
+      </button>
+      <article class="secret-note" id="secretNote" aria-hidden="true">
+        <button class="icon-button close-note" type="button" aria-label="ሚስጥራዊውን መልእክት ዝጋ">×</button>
+        <p class="note-kicker">ውድ ጓደኛዬ! 🥹💗</p>
+        <p>ይህን እያነበብሽ ከሆነ፣ በሕይወቴ ውስጥ ከሁሉም ውድ ሰዎች አንዷ መሆንሽን አትርሺ። እንደሆንሽ ስለሆንሽ አመሰግናለሁ። ምን ያህል ልዩ፣ ቆንጆና ችሎታ ያለሽ እንደሆንሽ ፈጽሞ አትርሺ።</p>
+        <p>በሕይወት ውስጥ ምንም ቢፈጠር፣ ሁሌም ከጎንሽ ሆኜ አበረታታሻለሁ፤ ደስታሽንም አብሬሽ አከብራለሁ።</p>
+        <p>የቅርብ ጓደኛዬ ብቻ ሳትሆኚ፣ ለልቤ ቤተሰብ ነሽ። <span aria-hidden="true">🫶</span></p>
+        <p class="letter-sign">ከልብ በሚመነጭ አድናቆት፣<br><strong>ቅርብ ጓደኛሽ ሀብታም ❤️</strong></p>
+      </article>
+    </section>
+
+    <section class="finale section-shell reveal" aria-labelledby="finalTitle">
+      <div class="finale-stars" aria-hidden="true">✦ &nbsp; ✧ &nbsp; ✦</div>
+      <p class="eyebrow">ሁሌም እስከ ዘላለም</p>
+      <h2 id="finalTitle">ለዘላለም የቅርብ ጓደኛዬ ነሽ! <span aria-hidden="true">❤️</span></h2>
+      <p>መልካም ልደት፣ ውባለም!</p>
+      <div class="final-sign">በፍቅርና በጓደኝነት፣<br><strong>ሀብታም።</strong></div>
+      <button class="text-button" id="restartButton" type="button">ስጦታውን እንደገና አንብቢ <span aria-hidden="true">↻</span></button>
+    </section>
+  </main>
+
+  <footer>ለውባለም በጓደኝነት፣ በእንክብካቤና በብዙ ፍቅር የተዘጋጀ።</footer>
+
+  <dialog class="letter-modal" id="letterModal" aria-labelledby="letterModalTitle">
+    <div class="letter-modal-shell">
+      <button class="icon-button close-letter" type="button" aria-label="ደብዳቤውን ዝጋ">×</button>
+      <article class="birthday-letter" lang="am" dir="ltr">
+        <p class="letter-number">ከሀብታም የተላከ የፍቅር መልእክት</p>
+        <h2 id="letterModalTitle">ውዷ ውባለም፣ መልካም ልደት! <span dir="ltr" aria-hidden="true">❤️🎂</span></h2>
+        <p>ዛሬ ልዩ ቀንሽ ነው። በዚህ ውብ ቀን፣ ምን ያህል ውድ እንደሆንሽኝና በሕይወቴ ውስጥ መኖርሽ ምን ያህል ደስታ እንደሚሰጠኝ ልነግርሽ እፈልጋለሁ። ለእኔ ጓደኛ ብቻ ሳትሆኚ፣ እንደ እህት የምትቀርቢኝ፣ ደስታዬን የምታበዢኝና ቀኖቼን በፈገግታሽ የምታስውቢ ልዩ ሰው ነሽ።</p>
+        <p>አብረን ለምንጋራቸው ደስታዎች፣ ለሳቃችን፣ ለውይይቶቻችንና ለእነዚያ ትንንሽ ውድ ትዝታዎቻችን ከልቤ አመሰግንሻለሁ። እነዚህ ትንንሽ አብረን የምናሳልፋቸው ጊዜያት ለእኔ ትልቅ ትርጉም አላቸው።</p>
+        <p>የምትመኚው ሁሉ እንዲሳካልሽ፣ ሁሌም በደስታ፣ በጤና፣ በሰላምና በስኬት እንድትኖሪ ከልቤ እመኝልሻለሁ። ፈገግታሽ ከፊትሽ አይጥፋ፤ ሕይወትሽም በውብ አጋጣሚዎችና በበረከት ይሙላ።</p>
+        <p>ወደፊትም አብረን ብዙ ደስ የሚሉ ትዝታዎችን እንድንፈጥር፣ እርስ በርሳችን እንድንደጋገፍና የእያንዳንዳችንን ደስታ አብረን እንድናከብር እመኛለሁ። እንደ ቅርብ ጓደኛዬ ማግኘቴ ለእኔ ትልቅ ስጦታ ነው።</p>
+        <p>ውድ ጓደኛዬ፣ ዛሬም ሆነ በሁሉም ቀናት ደስታ እንዲከተልሽ እመኛለሁ። መልካም ልደት! ከልቤ አከብርሻለሁ፤ በጣምም እወድሻለሁ። <span dir="ltr" aria-hidden="true">❤️🌷</span></p>
+        <p class="letter-sign">ሁሌም የምትወድሽ፣<br><strong>ሀብታም <span dir="ltr" aria-hidden="true">❤️</span></strong></p>
+      </article>
+    </div>
+  </dialog>
+
+  <dialog class="photo-modal" id="photoModal" aria-label="የፎቶ መመልከቻ">
+    <button class="icon-button close-photo" type="button" aria-label="የፎቶ መመልከቻውን ዝጋ">×</button>
+    <img id="lightboxImage" src="" alt="">
+    <p id="lightboxCaption"></p>
+  </dialog>
+
+  <noscript><p class="noscript">የልደት ስጦታዎቹን ለመክፈት ጃቫስክሪፕትን እባክሽ አንቂ።</p></noscript>
+  <script src="main.js"></script>
+</body>
+</html>
